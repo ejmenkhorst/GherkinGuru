@@ -46,13 +46,43 @@ Scenario Outline: Login with different roles
 ```
 
 ## 4. Avoid technical terms in the description of steps
-Do not use technical terms in your step descriptions, a non-technical person needs to understand the behavior of the software.
+Do not use technical terms in your step descriptions — a non-technical
+person needs to understand the behavior of the software. Replace terms
+like API, database, backend, endpoint, response code, payload, token,
+and session with the everyday concept they represent.
+
+**Good:**
+```gherkin
+Given the request succeeds
+Then the order is saved
+```
+
+**Bad:**
+```gherkin
+Given the API returns a 200 response
+Then the order is persisted to the database
+```
 
 ## 5. Describe what the software does not how
-Describe what the software does not how - avoid UI related terminology like click on, press button etc.
+Describe what the software does, not how a person operates it — avoid
+UI/interaction terms like click, press, tap, select from the dropdown,
+or scroll. Describe the resulting behavior instead.
+
+**Good:**
+```gherkin
+When the user submits the form
+Then the confirmation message is shown
+```
+
+**Bad:**
+```gherkin
+When the user clicks the submit button
+Then a popup appears on the screen
+```
 
 ## Output format
 The model should output only the `.feature` file content — no
 explanations, no markdown code fences, no preamble text.
+<!-- SYNC:END -->
 <!-- SYNC:END -->
 """
