@@ -20,8 +20,7 @@ cd gherkin-genie
 ollama pull qwen2.5:7b-instruct
 
 # Step 3: Build the local gherking-genie model
-chmod +x scripts/build.sh scripts/sync-rules.sh hooks/pre-commit
-git config core.hooksPath hooks
+chmod +x scripts/build.sh
 ./scripts/build.sh
 ```
 
@@ -33,8 +32,8 @@ ollama run gherkin-genie
 
 ## Rules
 
-See [rules/gherkin-style-guide.md](rules/gherkin-style-guide.md) for the full
-style guide enforced by this model.
+See the `SYSTEM` block in [Modelfile](Modelfile) for the full style guide
+enforced by this model.
 
 ## How GherkinGenie Works
 
@@ -54,33 +53,27 @@ Not the model — the **configuration**:
 | In Git | Not in Git |
 | --- | --- |
 | `Modelfile` | Base model weights (GBs) |
-| `rules/style-guide.md` | Generated output |
-| `README.md`, scripts | Ollama itself |
+| `README.md`, scripts | Generated output |
+| | Ollama itself |
 
 Coworkers clone the repo, pull the base model themselves, then run your Modelfile to get an identically-configured model — without you shipping anything heavy.
 
-### Two copies of the rules
+### One source of truth
 
-- `SYSTEM` prompt in the Modelfile → what the **model reads**.
-- `rules/gherkin-style-guide.md` → what **humans read/edit** in pull requests.
-
-Update both when rules change — that's the tradeoff for keeping each one readable in its own format.
+The `SYSTEM` block in the `Modelfile` is the only copy of the rules — it's
+what both the model reads and what humans read/edit in pull requests.
 
 ### The feedback loop
 
-Edit style guide → mirror automatically via pre-commit hook the Modelfile → rebuild → test → commit/push
+Edit the Modelfile's `SYSTEM` block → rebuild → test → commit/push
 → coworkers pull → rebuild → same fix everywhere
 
 Ollama does the heavy lifting (running the model). Your repo just carries the *instructions* for its behavior — small, readable, and versionable like normal code.
 
-## Examples
-
-See the [examples/](examples/) folder for sample output.
-
 ## Contributing
 
-Rule changes go in `rules/gherkin-style-guide.md` and must be mirrored in the
-`SYSTEM` prompt inside `Modelfile`.
+Rule changes go directly in the `SYSTEM` block inside `Modelfile`, then
+rebuild with `./scripts/build.sh` and test before committing.
 
 ## License
 
