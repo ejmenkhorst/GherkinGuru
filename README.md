@@ -1,11 +1,17 @@
 <p align="center">
-  <img src="assets/logo-wordmark.svg" alt="GherkinGuru" width="480">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/logo-wordmark-dark.svg">
+    <img src="assets/logo-wordmark.svg" alt="GherkinGuru" width="480">
+  </picture>
 </p>
 
-<p align="center">
-A local, offline AI guru for writing rule-compliant BDD Gherkin scenarios.<br>
-Consistent Given/When/Then, zero cloud dependency.
-</p>
+A local, offline AI guru for writing rule-compliant BDD Gherkin scenarios.  
+GherkinGuru is a tool that turns plain descriptions of a feature into properly written test scenarios (Gherkin/BDD format).  
+It automatically strips out technical details — button clicks, dropdowns, API calls — and rewrites them as plain business behavior: not "clicks the login button" but "the user logs in."  
+This matters because test scenarios should describe what the system does for the user, not how the screen works.
+
+That way, when the UI changes, the scenarios don't break, and anyone — developer, tester, or business analyst — can read and understand them without technical knowledge.
+
 
 ## Requirements
 
@@ -23,7 +29,7 @@ cd gherkin-guru
 # Step 2: Install local model
 ollama pull qwen2.5:7b-instruct
 
-# Step 3: Build the local gherking-genie model
+# Step 3: Build the local gherking-guru model
 chmod +x scripts/build.sh
 ./scripts/build.sh
 ```
