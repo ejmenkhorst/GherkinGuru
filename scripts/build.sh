@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 set -e
-ollama create gherkin-genie -f Modelfile
-echo "✅ gherkin-genie built. Run with: ollama run gherkin-genie"
+ollama create gherkin-guru -f Modelfile
+echo "✅ Gherkin-guru built successfully." 
+echo "✅ Run with: ollama run gherkin-guru"

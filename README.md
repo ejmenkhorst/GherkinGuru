@@ -1,7 +1,11 @@
-# GherkinGuru
+<p align="center">
+  <img src="assets/logo-wordmark.svg" alt="GherkinGuru" width="480">
+</p>
 
-A local, offline AI genie for writing rule-compliant BDD Gherkin scenarios.  
+<p align="center">
+A local, offline AI guru for writing rule-compliant BDD Gherkin scenarios.<br>
 Consistent Given/When/Then, zero cloud dependency.
+</p>
 
 ## Requirements
 
@@ -14,7 +18,7 @@ Consistent Given/When/Then, zero cloud dependency.
 ```bash
 # Step 1: Clone the project.
 git clone https://github.com/ejmenkhorst/GherkinGuru.git
-cd gherkin-genie
+cd gherkin-guru
 
 # Step 2: Install local model
 ollama pull qwen2.5:7b-instruct
@@ -24,10 +28,10 @@ chmod +x scripts/build.sh
 ./scripts/build.sh
 ```
 
-## Run gherking-genie locally
+## Run gherking-guru locally
 
 ```bash
-ollama run gherkin-genie
+ollama run gherkin-guru
 ```
 
 ## Rules
@@ -35,7 +39,7 @@ ollama run gherkin-genie
 See the `SYSTEM` block in [Modelfile](Modelfile) for the full style guide
 enforced by this model.
 
-## How GherkinGenie Works
+## How GherkinGuru Works
 
 ### Base model vs. Modelfile
 
@@ -44,7 +48,7 @@ Ollama separates the "brain" from the "personality":
 - The **base model** (`qwen2.5:7b-instruct`) is the actual neural network — downloaded once per machine via `ollama pull`. It's never stored in Git.
 - The **Modelfile** is a tiny recipe: it tells Ollama to take that base model and permanently attach a `SYSTEM` prompt (your Gherkin rules) plus settings like low temperature for consistency.
 
-Running ```ollama create gherkin-genie -f Modelfile``` bakes those rules into a new named model. No retraining happens — it's the same model, just always given your instructions before it sees a prompt.
+Running ```ollama create gherkin-guru -f Modelfile``` bakes those rules into a new named model. No retraining happens — it's the same model, just always given your instructions before it sees a prompt.
 
 ### What Git actually distributes
 
@@ -68,7 +72,7 @@ what both the model reads and what humans read/edit in pull requests.
 Edit the Modelfile's `SYSTEM` block → rebuild → test → commit/push
 → coworkers pull → rebuild → same fix everywhere
 
-Ollama does the heavy lifting (running the model). Your repo just carries the *instructions* for its behavior — small, readable, and versionable like normal code.
+Ollama does the heavy lifting (running the model). Your repo just carries the *instructions* for its behavior — small, readable, and version-controlled like normal code.
 
 ## Contributing
 
