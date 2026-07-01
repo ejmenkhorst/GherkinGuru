@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -e
+./scripts/sync-rules.sh
+git add Modelfile
