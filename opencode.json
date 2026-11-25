@@ -1,0 +1,18 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama (lokaal)",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "mistral-small:24b": {
+          "name": "Mistral Small (24B)"
+        }
+      }
+    }
+  },
+  "model": "ollama/mistral-small:24b"
+}
