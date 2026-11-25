@@ -59,6 +59,16 @@ Write scenarios for this story: as a customer I want free shipping on orders abo
 
 OpenCode loads the `gherkin-review` skill and edits the `.feature` file directly, giving a short reason for each change.
 
+### See it in action
+
+Here OpenCode has loaded the `gherkin-review` skill and runs Mistral Small (24B) locally through Ollama (bottom of the window). It summarizes the rules it will follow and shows what a bad scenario looks like next to a better one.
+
+![OpenCode with the gherkin-review skill loaded, listing the nine rules, the approach, and an imperative scenario that clicks buttons and visits URLs](assets/gherkin-review-skill-result1.png)
+
+Further down, it rewrites the imperative scenario as declarative steps and turns two copy-pasted scenarios into one `Scenario Outline` with an `Examples` table:
+
+![The declarative rewrite of the ordering scenario, followed by two copy-pasted shipping cost scenarios merged into one Scenario Outline with an Examples table](assets/gherkin-review-skill-result2.png)
+
 ### Troubleshooting
 
 If OpenCode answers but doesn't edit files or load the skill, Ollama's context window may be too small for the agent's tool calls. Quit the Ollama app, then start Ollama with a larger context window:
